@@ -1,6 +1,5 @@
 import axios, { AxiosResponse } from "axios";
 import cookiesStore from "./cookiesStore";
-import { DEFINE_ROUTE } from "@/constants/router";
 import showError from "@/utils/showError";
 
 const API_URL: string | undefined = process.env.NEXT_PUBLIC_DOMAIN_API;

@@ -93,6 +93,7 @@ export default function SongManagerModule() {
 
   React.useEffect(() => {
     handleGetSongList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const columns: TableProps<ISongInList>["columns"] = [

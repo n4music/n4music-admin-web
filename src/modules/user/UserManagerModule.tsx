@@ -15,16 +15,19 @@ export default function UserManagerModule() {
   const [userList, setUserList] = React.useState<IUser[]>([]);
   const [loading, setLoading] = React.useState(false);
   const [openModal, setOpenModal] = React.useState<boolean>(false);
-  const [selectedUser, setSelectedUser] = React.useState<ICreateUser | null>(null);
+  const [selectedUser, setSelectedUser] = React.useState<ICreateUser | null>(
+    null
+  );
 
   const handleClickRow = (record: IUser) => {
-    UserService.getUser(record.id).then((user) => {
-      setOpenModal(true);
-      setSelectedUser(user.data as unknown as ICreateUser);
-    }).catch((error) => {
-      message.error(error.message);
-    })
-    
+    UserService.getUser(record.id)
+      .then((user) => {
+        setOpenModal(true);
+        setSelectedUser(user.data as unknown as ICreateUser);
+      })
+      .catch((error) => {
+        message.error(error.message);
+      });
   };
 
   const handleGetUserList = async (queryParam = query) => {
@@ -62,6 +65,7 @@ export default function UserManagerModule() {
 
   React.useEffect(() => {
     handleGetUserList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const columns: TableProps<IUser>["columns"] = [
